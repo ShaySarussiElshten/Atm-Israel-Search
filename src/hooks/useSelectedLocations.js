@@ -4,8 +4,8 @@ import {useState,useEffect} from 'react'
 const useSelectedLocations =(locations)=>{
     
     const [selectedLocations,setSelectedLocations] = useState([])
-    const [viewPoint,setViewPoint] = useState([32.081715,34.773687])
-    const [zoom,setZoom] = useState(8)
+    const [viewPoint,setViewPoint] = useState([32.086500, 34.786400])
+    const [zoom,setZoom] = useState(12)
 
     useEffect(()=>{
         if(selectedLocations.length !== 0){

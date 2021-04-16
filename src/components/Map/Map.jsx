@@ -1,11 +1,12 @@
 import React from "react";
-import { MapContainer, TileLayer, Marker, Popup,MapConsumer } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, Popup} from 'react-leaflet'
 import PropTypes from 'prop-types'
 import ClipLoader from "react-spinners/ClipLoader"
+import MyMapConsumer from './MyMapConsumer/myMapConsumer'
 
 
+const Map = ({selectedLocations,viewPoint,zoom,isLoadingMode}) => {
 
-const Map = ({selectedLocations,viewPoint,zoom}) => {
 
   const renderMakerPositionsList =()=>{
       
@@ -27,20 +28,16 @@ const Map = ({selectedLocations,viewPoint,zoom}) => {
       return result
   }
 
+
   return (
     <>
-      {selectedLocations.length ===0 ? <ClipLoader color={true} loading={"#ffffff"} size={200} css={`display: block;margin: 0 auto;`} /> :
+      {isLoadingMode ? <ClipLoader color={true} loading={"#ffffff"} size={200} css={`display: block;margin: 0 auto;`} /> :
       <MapContainer scrollWheelZoom={true}>
         <TileLayer
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        /><MapConsumer>
-        {(map) => {
-          map.setZoom(zoom)
-          map.setView(viewPoint)
-          return null
-        }}
-        </MapConsumer>
+        />
+          <MyMapConsumer zoom={zoom} viewPoint={viewPoint} />
           {renderMakerPositionsList()}
       </MapContainer>}
     </>
@@ -51,7 +48,8 @@ const Map = ({selectedLocations,viewPoint,zoom}) => {
 Map.propTypes ={
   selectedLocations: PropTypes.array,
   viewPoint: PropTypes.array,
-  zoom: PropTypes.number
+  zoom: PropTypes.number,
+  isLoadingMode: PropTypes.bool
 }
 
 export default Map;

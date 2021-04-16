@@ -48,7 +48,7 @@ const SearchMenu = ({locations,onFormSubmit,setSelectedLocations})=>{
       if(isFirstRender && locations.length !== 0 ){
         setIsFirstRender(false)
       }
-    },[locations])
+    },[locations,isFirstRender])
 
  
     const renderSearchCards =()=>{
@@ -73,7 +73,7 @@ const SearchMenu = ({locations,onFormSubmit,setSelectedLocations})=>{
            <form className={classes.root} noValidate autoComplete="off">
                 <TextField 
                     id="standard-basic" 
-                    label="חיפוש כספומט לפי עיר"
+                    label="חיפוש כספומט"
                     name="search"
                     onChange={(event)=>{onFormSubmit(event.target.value)}}
                 />

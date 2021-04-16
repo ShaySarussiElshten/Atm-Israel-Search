@@ -7,7 +7,7 @@ import Grid from '@material-ui/core/Grid';
 
 
 const AtmSearch=()=> {
-  const [locations,handleSearch,selectedLocations,setSelectedLocations,viewPoint,zoom] = useLocations()
+  const [locations,handleSearch,selectedLocations,setSelectedLocations,viewPoint,zoom,isLoadingMode] = useLocations()
   
   return (
     <>
@@ -16,7 +16,7 @@ const AtmSearch=()=> {
               <SearchMenu locations={locations} onFormSubmit={handleSearch} setSelectedLocations={setSelectedLocations}/>
             </Grid>
             <Grid item sm={8} xs={12}>
-                <Map selectedLocations={selectedLocations} viewPoint={viewPoint} zoom={zoom} />
+                <Map selectedLocations={selectedLocations} viewPoint={viewPoint} zoom={zoom} isLoadingMode={isLoadingMode}/>
             </Grid>
       </Grid>
     </>
